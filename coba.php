@@ -14,7 +14,7 @@
 <br>
 <input type="text" name="totaltagihan" placeholder="Total Tagihan">
 <br>
-<input type="text" name="detiltagihan" placeholder="Detil Tagihan">
+<input type="text" name="detailtagihan" placeholder="Detil Tagihan">
 <br>
 <input type="text" name="statuspembayaran" placeholder="Status Pembayaran">
 <br>
@@ -22,4 +22,3 @@
 </form>
 </body>
 </html>
-//
