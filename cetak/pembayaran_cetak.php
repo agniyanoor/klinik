@@ -6,10 +6,10 @@ if($_GET) {
 	# Baca variabel URL
 	$noNota = $_GET['noNota'];
 	
-	# Perintah untuk mendapatkan data dari tabel penjualan
-	$mySql = "SELECT penjualan.*, petugas.nm_petugas FROM penjualan 
-			  LEFT JOIN petugas ON penjualan.kd_petugas=petugas.kd_petugas
-			  WHERE no_penjualan='$noNota'";
+	# Perintah untuk mendapatkan data dari tabel pembayaran
+	$mySql = "SELECT pembayaran.*, petugas.nm_petugas FROM pembayaran 
+			  LEFT JOIN petugas ON pembayaran.kd_petugas=petugas.kd_petugas
+			  WHERE no_pembayaran='$noNota'";
 	$myQry = mysql_query($mySql, $koneksidb)  or die ("Query salah : ".mysql_error());
 	$myData = mysql_fetch_array($myQry);
 }
@@ -20,20 +20,22 @@ else {
 ?>
 <html>
 <head>
-<title>:: Cetak Penjualan Obat per Nota | Klinik & Apotek Fitria</title>
+<title>:: Cetak 
+	
+	Obat per Nota | Klinik & Apotek Fitria</title>
 <link href="../styles/styles_cetak.css" rel="stylesheet" type="text/css"></head>
 <body>
-<h2> PENJUALAN OBAT </h2>
+<h2> pembayaran OBAT </h2>
 <table width="600" border="0" cellspacing="1" cellpadding="4" class="table-print">
   <tr>
-    <td width="139"><b>No. Penjualan </b></td>
+    <td width="139"><b>No. pembayaran </b></td>
     <td width="5"><b>:</b></td>
-    <td width="378" valign="top"><strong><?php echo $myData['no_penjualan']; ?></strong></td>
+    <td width="378" valign="top"><strong><?php echo $myData['no_pembayaran']; ?></strong></td>
   </tr>
   <tr>
-    <td><b>Tgl. Penjualan </b></td>
+    <td><b>Tgl. pembayaran </b></td>
     <td><b>:</b></td>
-    <td valign="top"><?php echo IndonesiaTgl($myData['tgl_penjualan']); ?></td>
+    <td valign="top"><?php echo IndonesiaTgl($myData['tgl_pembayaran']); ?></td>
   </tr>
   <tr>
     <td><b>Pelanggan</b></td>
@@ -75,10 +77,10 @@ else {
 	$grandTotalJual	= 0;
 	
 	// SQL menampilkan item obat yang dijual
-	$mySql ="SELECT penjualan_item.*, obat.nm_obat FROM penjualan_item
-			  LEFT JOIN obat ON penjualan_item.kd_obat=obat.kd_obat 
-			  WHERE penjualan_item.no_penjualan='$noNota'
-			  ORDER BY penjualan_item.kd_obat";
+	$mySql ="SELECT pembayaran_item.*, obat.nm_obat FROM pembayaran_item
+			  LEFT JOIN obat ON pembayaran_item.kd_obat=obat.kd_obat 
+			  WHERE pembayaran_item.no_pembayaran='$noNota'
+			  ORDER BY pembayaran_item.kd_obat";
 	$myQry = mysql_query($mySql, $koneksidb) or die ("Gagal Query Tmp".mysql_error());
 	$nomor  = 0;  
 	while($myData = mysql_fetch_array($myQry)) {
