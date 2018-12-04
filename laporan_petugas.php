@@ -17,7 +17,7 @@
     <td width="61" bgcolor="#CCCCCC"><b>Level</b></td>
   </tr>
   <?php
-	$mySql 	= "SELECT * from admin ORDER BY kd_petugas";
+	$mySql 	= "SELECT * FROM petugas ORDER BY kd_petugas";
 	$myQry 	= mysql_query($mySql, $koneksidb)  or die ("Query salah : ".mysql_error());
 	$nomor  = 0; 
 	while ($myData = mysql_fetch_array($myQry)) {

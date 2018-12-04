@@ -4,7 +4,7 @@ include_once "library/inc.seslogin.php";
 # UNTUK PAGING (PEMBAGIAN HALAMAN)
 $row = 50;
 $hal = isset($_GET['hal']) ? $_GET['hal'] : 0;
-$pageSql = "SELECT * from pembayaran";
+$pageSql = "SELECT * FROM penjualan";
 $pageQry = mysql_query($pageSql, $koneksidb) or die ("error paging: ".mysql_error());
 $jml	 = mysql_num_rows($pageQry);
 $max	 = ceil($jml/$row);
@@ -13,7 +13,7 @@ $max	 = ceil($jml/$row);
 
 <div class="row">
 <div class="col-lg-12">
-<h1 class="page-header">Laporan Penjualan</h1>
+<h1 class="page-header">Laporan Pembayaran Obat</h1>
 </div>
 <!-- /.col-lg-12 -->
 </div>
@@ -31,7 +31,7 @@ $max	 = ceil($jml/$row);
   </tr>
   <?php
 	# Perintah untuk menampilkan Semua Daftar Transaksi Penjualan
-	$mySql = "SELECT * from pembayaran ORDER BY no_penjualan DESC LIMIT $hal, $row";
+	$mySql = "SELECT * FROM penjualan ORDER BY no_penjualan DESC LIMIT $hal, $row";
 	$myQry = mysql_query($mySql, $koneksidb)  or die ("Query 1 salah : ".mysql_error());
 	$nomor = $hal;
 	while ($myData = mysql_fetch_array($myQry)) {

@@ -2,7 +2,7 @@
 # UNTUK PAGING (PEMBAGIAN HALAMAN)
 $row = 50;
 $hal = isset($_GET['hal']) ? $_GET['hal'] : 0;
-$pageSql = "SELECT * from apoteker";
+$pageSql = "SELECT * FROM obat";
 $pageQry = mysql_query($pageSql, $koneksidb) or die("error paging:".mysql_error());
 $jml	 = mysql_num_rows($pageQry);
 $max	 = ceil($jml/$row);
@@ -29,7 +29,7 @@ $max	 = ceil($jml/$row);
   </tr>
   <?php
 	# SQL Menampilkan data semua obat
-	$mySql 	= "SELECT * from apoteker ORDER BY kd_obat ASC LIMIT $hal, $row";
+	$mySql 	= "SELECT * FROM obat ORDER BY kd_obat ASC LIMIT $hal, $row";
 	$myQry 	= mysql_query($mySql, $koneksidb)  or die ("Query salah : ".mysql_error());
 	$nomor  = $hal; 
 	while ($myData = mysql_fetch_array($myQry)) {
